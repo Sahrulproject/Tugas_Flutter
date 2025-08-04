@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 
-final List<Color> warnaKotak = [
-  Colors.red,
-  Colors.yellow,
-  Colors.green,
-  Colors.green,
-  Colors.yellow,
-  Colors.red,
-];
-
-class Day7GridView extends StatelessWidget {
-  const Day7GridView({super.key});
+class Day7T4GridView extends StatelessWidget {
+  const Day7T4GridView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +10,7 @@ class Day7GridView extends StatelessWidget {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // FORMULIR
             Container(
@@ -77,7 +69,7 @@ class Day7GridView extends StatelessWidget {
             SizedBox(height: 12),
 
             GridView.count(
-              crossAxisCount: 3, // atau 2 sesuai kebutuhan
+              crossAxisCount: 3,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisSpacing: 8,
@@ -87,12 +79,11 @@ class Day7GridView extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: warnaKotak[index],
-                        // Colors.primaries[index % Colors.primaries.length],
                         borderRadius: BorderRadius.circular(10),
-                        // image: DecorationImage(
-                        //   image: AssetImage('assets/im/foto${index + 1}.jpg'),
-                        //   fit: BoxFit.cover,
+                        image: DecorationImage(
+                          image: AssetImage('assets/im/foto${index + 1}.jpg'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -110,6 +101,41 @@ class Day7GridView extends StatelessWidget {
                   ],
                 );
               }),
+            ),
+
+            SizedBox(height: 24),
+
+            // PRODUK LIST
+            Text(
+              "Produk Tersedia",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 12),
+
+            ListTile(
+              leading: Icon(Icons.bedroom_parent),
+              title: Text("Kamar Deluxe"),
+              subtitle: Text("Rp 300.000 / malam"),
+            ),
+            ListTile(
+              leading: Icon(Icons.bed),
+              title: Text("Kamar Standard"),
+              subtitle: Text("Rp 200.000 / malam"),
+            ),
+            ListTile(
+              leading: Icon(Icons.chair),
+              title: Text("Kamar Family"),
+              subtitle: Text("Rp 450.000 / malam"),
+            ),
+            ListTile(
+              leading: Icon(Icons.bathtub),
+              title: Text("Kamar Mandi Dalam"),
+              subtitle: Text("Rp 350.000 / malam"),
+            ),
+            ListTile(
+              leading: Icon(Icons.emoji_food_beverage),
+              title: Text("Paket Sarapan"),
+              subtitle: Text("Rp 50.000 / pax"),
             ),
           ],
         ),

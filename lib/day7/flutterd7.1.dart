@@ -15,7 +15,7 @@ class Day7GridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sahrulinde House"), centerTitle: true),
+      appBar: AppBar(title: Text("Form GridView"), centerTitle: true),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
