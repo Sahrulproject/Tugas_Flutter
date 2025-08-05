@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 final List<Color> warnaKotak = [
-  Colors.red,
-  Colors.yellow,
-  Colors.green,
-  Colors.green,
-  Colors.yellow,
-  Colors.red,
+  const Color.fromARGB(255, 0, 0, 0),
+  const Color.fromARGB(255, 255, 255, 255),
+  const Color.fromARGB(255, 0, 0, 0),
+  const Color.fromARGB(255, 255, 255, 255),
+  const Color.fromARGB(255, 0, 0, 0),
+  const Color.fromARGB(255, 255, 255, 255),
 ];
 
 class Day7GridView extends StatelessWidget {
@@ -15,7 +15,14 @@ class Day7GridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Form GridView"), centerTitle: true),
+      appBar: AppBar(
+        title: Text(
+          "Form GridView",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      backgroundColor: const Color.fromARGB(255, 164, 196, 189),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
