@@ -3,6 +3,7 @@ import 'package:ppkd_b_3/day6/flutter2_1.dart';
 import 'package:ppkd_b_3/start.dart';
 import 'package:ppkd_b_3/day7/flutterd7.1.dart';
 import 'package:ppkd_b_3/day7/flutterd7.2.dart';
+import 'package:ppkd_b_3/day8/tugasd8.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Day7T4GridView(),
+      home: Tugas5(),
     );
   }
 }
