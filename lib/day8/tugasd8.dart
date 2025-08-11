@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Tugas5 extends StatefulWidget {
-  const Tugas5({super.key});
+  const Tugas5({super.key, required bool appBar});
 
   @override
   State<Tugas5> createState() => _Tugas5State();

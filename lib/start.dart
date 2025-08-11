@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StartWidget extends StatelessWidget {
-  const StartWidget({super.key});
+  const StartWidget({super.key, required bool appBar});
 
   @override
   Widget build(BuildContext context) {
