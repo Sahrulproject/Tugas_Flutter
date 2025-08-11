@@ -6,9 +6,6 @@ import 'package:ppkd_b_3/day12/switchdm.dart';
 import 'package:ppkd_b_3/day12/terms.dart';
 import 'package:ppkd_b_3/day12/timepicker.dart';
 import 'package:ppkd_b_3/day6/flutter2_1.dart';
-// import 'package:ppkd_b_3/day_4_5/start.dart';
-// import 'package:ppkd_b_3/day_6/day_6.dart';
-// import 'package:ppkd_b_3/extension/navigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
