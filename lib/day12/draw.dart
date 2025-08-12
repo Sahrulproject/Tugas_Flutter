@@ -5,6 +5,9 @@ import 'package:ppkd_b_3/day12/dropdown.dart';
 import 'package:ppkd_b_3/day12/switchdm.dart';
 import 'package:ppkd_b_3/day12/terms.dart';
 import 'package:ppkd_b_3/day12/timepicker.dart';
+import 'package:ppkd_b_3/day14/listbuilder.dart';
+import 'package:ppkd_b_3/day14/listmodel.dart';
+import 'package:ppkd_b_3/day14/listmsd.dart';
 import 'package:ppkd_b_3/day6/flutter2_1.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
     DropDL(),
     DateDP(),
     Timepicker(),
+    Day14ListOnListViewBuilder(),
+    Day14ListMapStringDynamic(),
+    Day14ListOnListModel(),
   ];
 
   void onItemTap(int index) {
@@ -71,9 +77,27 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text("Time Picker"),
+              title: Text("Date Picker"),
               onTap: () {
                 onItemTap(5);
+              },
+            ),
+            ListTile(
+              title: Text("List View Builder"),
+              onTap: () {
+                onItemTap(6);
+              },
+            ),
+            ListTile(
+              title: Text("List View Map String Dynamic"),
+              onTap: () {
+                onItemTap(7);
+              },
+            ),
+            ListTile(
+              title: Text("List View Model"),
+              onTap: () {
+                onItemTap(8);
               },
             ),
           ],
