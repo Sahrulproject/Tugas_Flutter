@@ -30,7 +30,7 @@ class _Tugas8State extends State<Navt8> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info_outline),
-            label: 'Tentang',
+            label: 'About',
           ),
           // BottomNavigationBarItem(icon: Icon(Icons.school), label: 'School'),
         ],
