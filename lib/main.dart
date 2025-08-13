@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ppkd_b_3/day12/navt8.dart';
+import 'package:ppkd_b_3/day15/home1.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       //   // Tugas7flutter.id: (context) => Tugas7flutter(),
       //   Tugas8.id: (context) => Tugas8(),
       // },
-      home: Navt8(),
+      home: Day15PDHal1(),
     );
     // Navigator.pushNamed(context, '/Tugas6');
     // return MaterialApp(
