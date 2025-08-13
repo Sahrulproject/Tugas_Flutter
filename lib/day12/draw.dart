@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text("Time Picker"),
+              title: Text("Date Picker"),
               onTap: () {
                 onItemTap(5);
               },
