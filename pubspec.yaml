@@ -24,6 +24,8 @@ flutter:
   assets:
     - assets/fonts/
     - assets/im/
+    - assets/im/medicine/
+
   fonts:
     - family: BebasNeue
       fonts:

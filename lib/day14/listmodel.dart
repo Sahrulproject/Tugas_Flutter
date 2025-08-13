@@ -11,17 +11,57 @@ class Day14ListOnListModel extends StatefulWidget {
 class _Day14ListOnListModelState extends State<Day14ListOnListModel> {
   //Step 1
 
-  final List<ProdukModel> produkModel = [
-    ProdukModel(nama: "Tramadol", price: 50000, warna: Colors.blue),
-    ProdukModel(nama: "Panadol", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "Paracetamol", price: 60000, warna: Colors.red),
-    ProdukModel(nama: "Bodrexin", price: 70000, warna: Colors.yellow),
-    ProdukModel(nama: "Paramex", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "Nellco", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "OBH Plus", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "Diapet", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "Diatabs", price: 80000, warna: Colors.indigoAccent),
-    ProdukModel(nama: "Mixagrip", price: 80000, warna: Colors.indigoAccent),
+  final List<ProdukObat> produkModel = [
+    ProdukObat(
+        nama: "Tramadol",
+        price: 75000,
+        warna: Colors.blue,
+        gambar: "assets/im/medicine/tramadol.jpg"),
+    ProdukObat(
+        nama: "Panadol",
+        price: 15000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/panadol.jpg"),
+    ProdukObat(
+        nama: "Paracetamol",
+        price: 15000,
+        warna: Colors.red,
+        gambar: "assets/im/medicine/parcetamol.jpg"),
+    ProdukObat(
+        nama: "Bodrexin",
+        price: 20000,
+        warna: Colors.yellow,
+        gambar: "assets/im/medicine/bodrexin.jpg"),
+    ProdukObat(
+        nama: "Paramex",
+        price: 10000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/paramex.jpg"),
+    ProdukObat(
+        nama: "Nellco",
+        price: 30000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/nellco.jpg"),
+    ProdukObat(
+        nama: "OBH Plus",
+        price: 25000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/obh plus.jpg"),
+    ProdukObat(
+        nama: "Diapet",
+        price: 10000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/diapet.png"),
+    ProdukObat(
+        nama: "Diatabs",
+        price: 15000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/diatabs.jpg"),
+    ProdukObat(
+        nama: "Mixagrip",
+        price: 5000,
+        warna: Colors.indigoAccent,
+        gambar: "assets/im/medicine/mixagrip.jpg"),
   ];
 
   @override
@@ -36,13 +76,21 @@ class _Day14ListOnListModelState extends State<Day14ListOnListModel> {
             itemCount: produkModel.length,
             itemBuilder: (BuildContext context, int index) {
               final dataProdukModel = produkModel[index];
-              return ListTile(
-                title: Text(dataProdukModel.nama),
-                subtitle: Text(dataProdukModel.price.toString()),
-                trailing: CircleAvatar(backgroundColor: dataProdukModel.warna),
-                leading: CircleAvatar(
-                  backgroundColor: Colors.amber,
-                  child: Text("${index + 1}"),
+              return Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(dataProdukModel.gambar),
+                  ),
+                  title: Text(dataProdukModel.nama),
+                  subtitle: Text("Rp. ${dataProdukModel.price}"),
+                  trailing: IconButton(
+                    icon: Icon(Icons.shopping_cart),
+                    color: Colors.blueGrey,
+                    onPressed: () {
+                      // Aksi ketika tombol keranjang ditekan
+                      print("Tambah ke keranjang: ${dataProdukModel.nama}");
+                    },
+                  ),
                 ),
               );
             },

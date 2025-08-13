@@ -11,17 +11,57 @@ class Day14ListMapStringDynamic extends StatefulWidget {
 class _Day14ListMapStringDynamicState extends State<Day14ListMapStringDynamic> {
   //Step 1
 
-  final List<Map<String, dynamic>> produk = [
-    {"nama": "Tramadol", "price": 15000, "warna": Colors.blue},
-    {"nama": "Panadol", "price": 13000, "warna": Colors.blue},
-    {"nama": "Paracetamol", "price": 60000, "warna": Colors.red},
-    {"nama": "Bodrexin", "price": 70000, "warna": Colors.yellow},
-    {"nama": "Paramex", "price": 70000, "warna": Colors.yellow},
-    {"nama": "Nellco", "price": 80000, "warna": Colors.green},
-    {"nama": "OBH Plus", "price": 80000, "warna": Colors.green},
-    {"nama": "Diapet", "price": 80000, "warna": Colors.green},
-    {"nama": "Diatabs", "price": 80000, "warna": Colors.green},
-    {"nama": "Mixagrip", "price": 80000, "warna": Colors.green},
+  final List<Map<String, dynamic>> medicine = [
+    {
+      "nama": "Tramadol",
+      "price": 75000,
+      "gambar": "assets/im/medicine/tramadol.jpg"
+    },
+    {
+      "nama": "Panadol",
+      "price": 15000,
+      "gambar": "assets/im/medicine/panadol.jpg"
+    },
+    {
+      "nama": "Paracetamol",
+      "price": 15000,
+      "gambar": "assets/im/medicine/parcetamol.jpg"
+    },
+    {
+      "nama": "Bodrexin",
+      "price": 20000,
+      "gambar": "assets/im/medicine/bodrexin.jpg"
+    },
+    {
+      "nama": "Paramex",
+      "price": 10000,
+      "gambar": "assets/im/medicine/paramex.jpg"
+    },
+    {
+      "nama": "Nellco",
+      "price": 30000,
+      "gambar": "assets/im/medicine/nellco.jpg"
+    },
+    {
+      "nama": "OBH Plus",
+      "price": 25000,
+      "gambar": "assets/im/medicine/obh plus.jpg"
+    },
+    {
+      "nama": "Diapet",
+      "price": 10000,
+      "gambar": "assets/im/medicine/diapet.png"
+    },
+    {
+      "nama": "Diatabs",
+      "price": 15000,
+      "gambar": "assets/im/medicine/diatabs.jpg"
+    },
+    {
+      "nama": "Mixagrip",
+      "price": 5000,
+      "gambar": "assets/im/medicine/mixagrip.jpg"
+    },
   ];
 
   @override
@@ -29,22 +69,22 @@ class _Day14ListMapStringDynamicState extends State<Day14ListMapStringDynamic> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          //List
-          Divider(),
           //List of Map
           ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: produk.length,
+            itemCount: medicine.length,
             itemBuilder: (BuildContext context, int index) {
-              final dataProduk = produk[index];
+              final dataMedicine = medicine[index];
               return ListTile(
-                title: Text(dataProduk["nama"]),
-                subtitle: Text(dataProduk["price"].toString()),
-                trailing: CircleAvatar(backgroundImage: dataProduk["warna"]),
+                title: Text(dataMedicine["nama"]),
+                subtitle: Text("Rp. ${dataMedicine["price"]}"),
+                trailing: CircleAvatar(
+                  backgroundImage: AssetImage(dataMedicine["gambar"]),
+                ),
                 leading: CircleAvatar(
-                  backgroundColor: Colors.amber,
-                  child: Text("${index + 1}"),
+                  backgroundColor: Colors.blueGrey[100],
+                  child: Text("${index + 1}."),
                 ),
               );
             },

@@ -3,30 +3,37 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-class ProdukModel {
+class ProdukObat {
   final String nama;
   final int price;
   final Color warna;
-  ProdukModel({required this.nama, required this.price, required this.warna});
+  final String gambar;
+  ProdukObat(
+      {required this.nama,
+      required this.price,
+      required this.warna,
+      required this.gambar});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nama': nama,
       'price': price,
       'warna': warna.value,
+      'gambar': gambar
     };
   }
 
-  factory ProdukModel.fromMap(Map<String, dynamic> map) {
-    return ProdukModel(
+  factory ProdukObat.fromMap(Map<String, dynamic> map) {
+    return ProdukObat(
       nama: map['nama'] as String,
       price: map['price'] as int,
       warna: Color(map['warna'] as int),
+      gambar: map['gambar'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ProdukModel.fromJson(String source) =>
-      ProdukModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProdukObat.fromJson(String source) =>
+      ProdukObat.fromMap(json.decode(source) as Map<String, dynamic>);
 }
