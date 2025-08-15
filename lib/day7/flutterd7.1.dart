@@ -11,6 +11,7 @@ final List<Color> warnaKotak = [
 
 class Day7GridView extends StatelessWidget {
   const Day7GridView({super.key});
+  static const id = "/Day7GridView";
 
   @override
   Widget build(BuildContext context) {

@@ -14,6 +14,7 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController kotadomController = TextEditingController();
+
   @override
   //  controller: emailController,
   // onChanged: (value) {
@@ -40,7 +41,7 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
               ),
               Divider(),
               Row(children: [Text('Nama Lengkap')]),
-              TextFormConst(
+              TextFormField(
                 hintText: "Masukkan Nama",
                 controller: nameController,
                 onChanged: (p0) {
@@ -48,7 +49,7 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
                 },
               ),
               Row(children: [Text('Email')]),
-              TextFormConst(
+              TextFormField(
                 hintText: "Masukkan Email",
                 controller: emailController,
                 onChanged: (p0) {
@@ -56,7 +57,7 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
                 },
               ),
               Row(children: [Text('No. Handhpone')]),
-              TextFormConst(
+              TextFormField(
                 hintText: "Masukkan Phone",
                 controller: phoneController,
                 onChanged: (p0) {
@@ -64,7 +65,7 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
                 },
               ),
               Row(children: [Text('Kota Domisili')]),
-              TextFormConst(
+              TextFormField(
                 hintText: "Masukkan Kota Domisili",
                 controller: kotadomController,
                 onChanged: (p0) {

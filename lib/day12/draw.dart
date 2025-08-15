@@ -8,7 +8,10 @@ import 'package:ppkd_b_3/day12/timepicker.dart';
 import 'package:ppkd_b_3/day14/listbuilder.dart';
 import 'package:ppkd_b_3/day14/listmodel.dart';
 import 'package:ppkd_b_3/day14/listmsd.dart';
+import 'package:ppkd_b_3/day16/views/user_screen.dart';
+import 'package:ppkd_b_3/day16/widgets/log_out_button.dart';
 import 'package:ppkd_b_3/day6/flutter2_1.dart';
+import 'package:ppkd_b_3/day9-10/Login.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,6 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Day14ListOnListViewBuilder(),
     Day14ListMapStringDynamic(),
     Day14ListOnListModel(),
+    Day16UserScreen(),
+    LogOutButton(),
   ];
 
   void onItemTap(int index) {
@@ -98,6 +103,22 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text("List View Model"),
               onTap: () {
                 onItemTap(8);
+              },
+            ),
+            ListTile(
+              title: Text("Data Penghuni Kost"),
+              onTap: () {
+                onItemTap(9);
+              },
+            ),
+            ListTile(
+              title: Text("Logout"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Day9T6TextRich()),
+                );
               },
             ),
           ],
