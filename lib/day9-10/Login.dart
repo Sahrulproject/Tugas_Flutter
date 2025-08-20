@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/Extension/navigation.dart';
+import 'package:ppkd_b_3/day12/draw.dart';
 import 'package:ppkd_b_3/day16/views/register_screen.dart';
 
 class Day9T6TextRich extends StatefulWidget {
@@ -12,10 +13,9 @@ class Day9T6TextRich extends StatefulWidget {
 
 class _Day9T6TextRich extends State<Day9T6TextRich> {
   bool isVisibility = false;
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController tipeController = TextEditingController();
-  final bool _obscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +106,14 @@ class _Day9T6TextRich extends State<Day9T6TextRich> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
+                    // ✅ Setelah submit login masuk ke Drawer
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const HomeScreen(), // ganti sesuai class di drawer.dart
+                      ),
+                    );
                     // login();
                   },
                   style: ElevatedButton.styleFrom(
@@ -183,7 +191,9 @@ class _Day9T6TextRich extends State<Day9T6TextRich> {
                   ),
                   TextButton(
                     onPressed: () {
-                      context.push(RegisterScreen());
+                      setState(() {
+                        context.push(RegisterScreen());
+                      });
                       // Navigator.pushReplacement(
                       //   context,
                       //   MaterialPageRoute(builder: (context) => MeetEmpatA()),
@@ -227,7 +237,7 @@ class _Day9T6TextRich extends State<Day9T6TextRich> {
   }) {
     return TextField(
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
@@ -256,7 +266,7 @@ class _Day9T6TextRich extends State<Day9T6TextRich> {
                   });
                 },
                 icon: Icon(
-                  isVisibility ? Icons.visibility_off : Icons.visibility,
+                  isVisibility ? Icons.visibility : Icons.visibility_off,
                   // color: AppColor.gray88,
                 ),
               )

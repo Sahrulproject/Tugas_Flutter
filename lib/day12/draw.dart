@@ -11,7 +11,6 @@ import 'package:ppkd_b_3/day14/listmsd.dart';
 import 'package:ppkd_b_3/day16/views/user_screen.dart';
 import 'package:ppkd_b_3/day16/widgets/log_out_button.dart';
 import 'package:ppkd_b_3/day6/flutter2_1.dart';
-import 'package:ppkd_b_3/day9-10/Login.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -106,21 +105,23 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text("Data Penghuni Kost"),
+              title: Text("Data Hewan Peliharaan"),
               onTap: () {
                 onItemTap(9);
               },
             ),
             ListTile(
-              title: Text("Logout"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Day9T6TextRich()),
-                );
-              },
-            ),
+                title: Text("Logout"),
+                onTap: () {
+                  onItemTap(10);
+                })
+            //     // Navigator.pop(context);
+            //     // Navigator.pushReplacement(
+            //     //   context,
+            //     //   MaterialPageRoute(builder: (context) => Day9T6TextRich()),
+            //     // );
+            //   },
+            // ),
           ],
         ),
       ),

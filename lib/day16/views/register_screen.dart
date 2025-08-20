@@ -13,7 +13,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   bool isVisibility = false;
   bool isLoading = false;
   @override
@@ -22,42 +21,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void registerUser() async {
-    setState(() {
-      isLoading = true;
-    });
-
+    isLoading = true;
+    setState(() {});
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
     final name = nameController.text.trim();
-
-    // Validasi input
     if (email.isEmpty || password.isEmpty || name.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("Semua field harus diisi"),
+          content: Text("Email, Password, dan Nama tidak boleh kosong"),
         ),
       );
-      setState(() {
-        isLoading = false;
-      });
+      isLoading = false;
+
       return;
     }
-
-    // Buat objek Peliharaan
-    final user = Peliharaan(email: email, password: passsword, name: name);
-
-    // Simpan ke database
-    await DbHelper.registerPeliharaan(user);
-
-    // Setelah berhasil
-    if (!mounted) return;
-    setState(() {
+    final user = User(email: email, password: password, name: name);
+    await DbHelper.registerUser(user);
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       isLoading = false;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
     });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Pendaftaran berhasil")),
-    );
+    setState(() {});
+    isLoading = false;
   }
 
   SafeArea buildLayer() {
@@ -180,7 +168,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/images/icon_google.png",
+                        "assets/im/google.png",
                         height: 16,
                         width: 16,
                       ),
@@ -229,7 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage("assets/im/background.png"),
           fit: BoxFit.cover,
         ),
       ),

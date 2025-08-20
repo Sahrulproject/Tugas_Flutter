@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:ppkd_b_3/day12/navt8.dart';
 import 'package:ppkd_b_3/day16/views/splash_screen.dart';
-import 'package:ppkd_b_3/day7/flutterd7.1.dart';
-import 'package:ppkd_b_3/day9-10/Login.dart';
+import 'package:ppkd_b_3/day9/Tugas6D6.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,14 +42,14 @@ class MyApp extends StatelessWidget {
       routes: {
         "/loginscreen": (context) => Day9T6TextRich(),
         Day16SplashScreen.id: (context) => Day16SplashScreen(),
-        Day7GridView.id: (context) => Day7GridView(),
+        // Day7GridView.id: (context) => Day7GridView(),
         Navt8.id: (context) => Navt8(),
       },
       //   Day16SplashScreen.id: (context) => Day16SplashScreen(),
       //   Day7GridView.id: (context) => Day7GridView(),
       //   MainScreen.id: (context) => MainScreen(),
 
-      // home: Day15PDHal1(),
+      // home: Day9TextRich(),
     );
     // Navigator.pushNamed(context, '/Tugas6');
     // return MaterialApp(

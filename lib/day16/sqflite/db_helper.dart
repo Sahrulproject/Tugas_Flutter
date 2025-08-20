@@ -7,7 +7,7 @@ class DbHelper {
   static Future<Database> databaseHelper() async {
     final dbPath = await getDatabasesPath();
     return openDatabase(
-      join(dbPath, 'peliharaan.db'),
+      join(dbPath, 'login.db'),
       onCreate: (db, version) {
         return db.execute(
           'CREATE TABLE users(id INTEGER PRIMARY KEY, email TEXT, password TEXT, name TEXT)',
@@ -17,32 +17,48 @@ class DbHelper {
     );
   }
 
-  static Future<void> registerPeliharaan(Peliharaan peliharaan) async {
+  static Future<void> registerUser(User user) async {
     final db = await databaseHelper();
     await db.insert(
-      'peliharaan',
-      peliharaan.toMap(),
+      'users',
+      user.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
-  // static Future<Peliharaan?> loginPeliharaan(String email, String password) async {
-  //   final db = await databaseHelper();
-  //   final List<Map<String, dynamic>> results = await db.query(
-  //     'peliharaan', // pastikan ini tabel yang benar
-  //     where: 'email = ? AND password = ?',
-  //     whereArgs: [email, password],
-  //   );
-
-  //   if (results.isNotEmpty) {
-  //     return Peliharaan.fromMap(results.first);
-  //   }
-  //   return null;
-  // }
-
-  static Future<List<Peliharaan>> getAllPeliharaan() async {
+  static Future<User?> loginUser(String email, String password) async {
     final db = await databaseHelper();
-    final List<Map<String, dynamic>> results = await db.query('kostan');
-    return results.map((e) => Peliharaan.fromMap(e)).toList();
+    final List<Map<String, dynamic>> results = await db.query(
+      'users',
+      where: 'email = ? AND password = ?',
+      whereArgs: [email, password],
+    );
+
+    if (results.isNotEmpty) {
+      return User.fromMap(results.first);
+    }
+    return null;
+  }
+
+  static Future<List<User>> getAllUsers() async {
+    final db = await databaseHelper();
+    final List<Map<String, dynamic>> results = await db.query('users');
+    return results.map((e) => User.fromMap(e)).toList();
+  }
+
+  static Future<void> updateUser(User user) async {
+    final db = await databaseHelper();
+    await db.update(
+      'users',
+      user.toMap(),
+      where: 'id = ?',
+      whereArgs: [user.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  static Future<void> deleteUser(int id) async {
+    final db = await databaseHelper();
+    await db.delete('users', where: 'id = ?', whereArgs: [id]);
   }
 }

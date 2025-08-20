@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/day15/halamankonfirmasi.dart';
-import 'package:ppkd_b_3/day15/textform.dart';
 
 class Day15PDHal1 extends StatefulWidget {
   const Day15PDHal1({super.key});
@@ -42,7 +41,9 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
               Divider(),
               Row(children: [Text('Nama Lengkap')]),
               TextFormField(
-                hintText: "Masukkan Nama",
+                decoration: const InputDecoration(
+                  hintText: "Masukkan Nama",
+                ),
                 controller: nameController,
                 onChanged: (p0) {
                   setState(() {});
@@ -50,7 +51,9 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
               ),
               Row(children: [Text('Email')]),
               TextFormField(
-                hintText: "Masukkan Email",
+                decoration: const InputDecoration(
+                  hintText: "Masukkan Email",
+                ),
                 controller: emailController,
                 onChanged: (p0) {
                   setState(() {});
@@ -58,7 +61,9 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
               ),
               Row(children: [Text('No. Handhpone')]),
               TextFormField(
-                hintText: "Masukkan Phone",
+                decoration: const InputDecoration(
+                  hintText: "Masukkan Phone",
+                ),
                 controller: phoneController,
                 onChanged: (p0) {
                   setState(() {});
@@ -66,7 +71,9 @@ class _Day15PDHal1State extends State<Day15PDHal1> {
               ),
               Row(children: [Text('Kota Domisili')]),
               TextFormField(
-                hintText: "Masukkan Kota Domisili",
+                decoration: const InputDecoration(
+                  hintText: "Masukkan Kota Domisili",
+                ),
                 controller: kotadomController,
                 onChanged: (p0) {
                   setState(() {});

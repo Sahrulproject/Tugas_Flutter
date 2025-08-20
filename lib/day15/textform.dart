@@ -6,7 +6,7 @@ class TextFormConst extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.onChanged,
-    required TextInputType keboardType,
+    required TextInputType keyboardType,
     InputDecoration? decoration,
   });
   final String hintText;

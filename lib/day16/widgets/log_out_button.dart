@@ -11,7 +11,7 @@ class LogOutButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         PreferenceHandler.removeLogin();
-        context.pushReplacementNamed(Day9T6TextRich.id);
+        context.pushReplacement(Day9T6TextRich());
       },
       child: Text("Keluar"),
     );
