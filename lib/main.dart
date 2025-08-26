@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ppkd_b_3/day12/navt8.dart';
-import 'package:ppkd_b_3/day16/views/splash_screen.dart';
-import 'package:ppkd_b_3/day9/Tugas6D6.dart';
+import 'package:ppkd_b_3/day23/view/get_api.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,18 +36,19 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 3, 3, 3),
         ),
       ),
-      initialRoute: Day16SplashScreen.id,
-      routes: {
-        "/loginscreen": (context) => Day9T6TextRich(),
-        Day16SplashScreen.id: (context) => Day16SplashScreen(),
-        // Day7GridView.id: (context) => Day7GridView(),
-        Navt8.id: (context) => Navt8(),
-      },
+      // initialRoute: Day16SplashScreen.id,
+      // routes: {
+      //   "/loginscreen": (context) => Day9T6TextRich(),
+      //   Day16SplashScreen.id: (context) => Day16SplashScreen(),
+      //   // Day7GridView.id: (context) => Day7GridView(),
+      //   Navt8.id: (context) => Navt8(),
+      // },
+
       //   Day16SplashScreen.id: (context) => Day16SplashScreen(),
       //   Day7GridView.id: (context) => Day7GridView(),
       //   MainScreen.id: (context) => MainScreen(),
 
-      // home: Day9TextRich(),
+      home: Day23GetAPIScreen(),
     );
     // Navigator.pushNamed(context, '/Tugas6');
     // return MaterialApp(
