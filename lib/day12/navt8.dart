@@ -4,7 +4,7 @@ import 'package:ppkd_b_3/day12/draw.dart';
 
 class Navt8 extends StatefulWidget {
   const Navt8({super.key});
-  static const id = "/task";
+  static const id = "/main";
 
   @override
   State<Navt8> createState() => _Tugas8State();
