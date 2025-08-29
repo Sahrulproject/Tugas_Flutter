@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/day12/navt8.dart';
-import 'package:ppkd_b_3/day16/sqflite/db_helper.dart';
+import 'package:ppkd_b_3/day25/api/register_user.dart';
+import 'package:ppkd_b_3/day25/model/register_model.dart';
+import 'package:ppkd_b_3/day25/view/home_api.dart';
 import 'package:ppkd_b_3/day25/view/post_api_screen.dart';
 import 'package:ppkd_b_3/extension/navigation.dart';
 import 'package:ppkd_b_3/preference/shared_preference.dart';
@@ -15,32 +16,71 @@ class LoginAPIScreen extends StatefulWidget {
 class _LoginAPIScreenState extends State<LoginAPIScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  RegisterUserModel? user;
+  String? errorMessage;
+  bool isLoading = false;
   bool isVisibility = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
   }
 
-  login() async {
+  void loginUser() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email dan Password tidak boleh kosong")),
+        const SnackBar(
+          content: Text("Email, Password, dan Nama tidak boleh kosong"),
+        ),
       );
-      // isLoading = false;
+      isLoading = false;
 
       return;
     }
-    final userData = await DbHelper.loginUser(email, password);
-    if (userData != null) {
-      PreferenceHandler.saveLogin();
-      context.pushReplacementNamed(Navt8.id);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email atau Password salah")),
+    try {
+      final result = await AuthenticationAPI.loginUser(
+        email: email,
+        password: password,
       );
+      setState(() {
+        user = result;
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
+      PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
+      print(user?.toJson());
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HalamanUtamaDua(),
+          ));
+    } catch (e) {
+      print(e);
+      setState(() {
+        errorMessage = e.toString();
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMessage.toString())));
+    } finally {
+      setState(() {});
+      isLoading = false;
     }
+    // final user = User(email: email, password: password, name: name);
+    // await DbHelper.registerUser(user);
+    // Future.delayed(const Duration(seconds: 1)).then((value) {
+    //   isLoading = false;
+    //   ScaffoldMessenger.of(
+    //     context,
+    //   ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
+    // });
   }
 
   SafeArea buildLayer() {
@@ -54,12 +94,15 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
             children: [
               Text(
                 "Welcome Back",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
-              height(12),
+              height(10),
               Text(
                 "Login API to access your account",
-                // style: TextStyle(fontSize: 14, color: AppColor.gray88),
+                style: TextStyle(fontSize: 14, color: Colors.black),
               ),
               height(24),
               buildTitle("Email Address"),
@@ -90,22 +133,22 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                     "Forgot Password?",
                     style: TextStyle(
                       fontSize: 12,
-                      // color: AppColor.orange,
+                      color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
               ),
-              height(24),
+              height(8),
               SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    login();
+                    loginUser();
                   },
                   style: ElevatedButton.styleFrom(
-                    // backgroundColor: AppColor.blueButton,
+                    backgroundColor: const Color.fromARGB(255, 9, 117, 206),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
@@ -114,8 +157,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                     "Login",
                     style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                 ),
@@ -144,7 +186,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                   ),
                 ],
               ),
-              height(16),
+              height(18),
               SizedBox(
                 height: 48,
                 child: ElevatedButton(
@@ -159,17 +201,22 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/images/icon_google.png",
+                        "assets/im/google.png",
                         height: 16,
                         width: 16,
                       ),
                       width(4),
-                      Text("Google"),
+                      Text(
+                        "Google",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-              height(16),
+              height(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -188,7 +235,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                        // color: AppColor.blueButton,
+                        color: const Color.fromARGB(255, 0, 0, 0),
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -209,7 +256,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage("assets/im/catback.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -223,13 +270,13 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
   }) {
     return TextField(
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withOpacity(0.5),
             width: 1.0,
           ),
         ),
@@ -240,7 +287,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withOpacity(0.5),
             width: 1.0,
           ),
         ),
@@ -252,7 +299,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                   });
                 },
                 icon: Icon(
-                  isVisibility ? Icons.visibility_off : Icons.visibility,
+                  isVisibility ? Icons.visibility : Icons.visibility_off,
                   // color: AppColor.gray88,
                 ),
               )

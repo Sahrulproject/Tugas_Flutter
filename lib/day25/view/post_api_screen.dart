@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/day25/api/register_user.dart';
 import 'package:ppkd_b_3/day25/model/register_model.dart';
+import 'package:ppkd_b_3/day25/view/login_api_screen.dart';
 import 'package:ppkd_b_3/preference/shared_preference.dart';
 
 class PostApiScreen extends StatefulWidget {
@@ -126,7 +127,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
                     "Forgot Password?",
                     style: TextStyle(
                       fontSize: 12,
-                      // color: AppColor.orange,
+                      color: Colors.black,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -149,10 +150,9 @@ class _PostApiScreenState extends State<PostApiScreen> {
                   child: isLoading
                       ? CircularProgressIndicator()
                       : Text(
-                          "Daftar",
+                          "Submit",
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
@@ -197,12 +197,12 @@ class _PostApiScreenState extends State<PostApiScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/images/icon_google.png",
+                        "assets/im/google.png",
                         height: 16,
                         width: 16,
                       ),
                       width(4),
-                      Text("Google"),
+                      Text("Google", style: TextStyle(color: Colors.black)),
                     ],
                   ),
                 ),
@@ -212,20 +212,21 @@ class _PostApiScreenState extends State<PostApiScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    "Have an account?",
                     // style: TextStyle(fontSize: 12, color: AppColor.gray88),
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => MeetEmpatA()),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginAPIScreen()),
+                      );
                     },
                     child: Text(
-                      "Sign Up",
+                      "Sign In",
                       style: TextStyle(
-                        // color: AppColor.blueButton,
+                        color: Colors.black,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -246,7 +247,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage("assets/im/catback.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -260,7 +261,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
   }) {
     return TextField(
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
@@ -289,7 +290,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
                   });
                 },
                 icon: Icon(
-                  isVisibility ? Icons.visibility_off : Icons.visibility,
+                  isVisibility ? Icons.visibility : Icons.visibility_off,
                   // color: AppColor.gray88,
                 ),
               )
